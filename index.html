@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safety Workflows | Interactive Drone Survey Map</title>
+    
+    <!-- Google Fonts: Outfit for premium modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Leaflet & Plugin CSS from CDNs for reliable asset loading -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" crossorigin="" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-measure@3.1.0/dist/leaflet-measure.css" crossorigin="" />
+  </head>
+  <body>
+    <!-- The Fullscreen Map Container -->
+    <div id="map"></div>
+
+    <!-- Premium Glassmorphism Header Overlay -->
+    <header class="header-overlay" id="safety-header">
+      <div class="header-brand">
+        <div class="logo-container">
+          <svg class="logo-svg" viewBox="0 0 24 24" width="28" height="28">
+            <path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M9 11l2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>safetyworkflows.com</h1>
+          <p class="subtitle">Beyond the Pale 2026 &bull; Drone Orthomosaic</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Survey Info & Pulse Indicator -->
+      <div class="survey-status">
+        <div class="status-indicator">
+          <span class="pulse-dot"></span>
+          <span class="status-text">Survey Active</span>
+        </div>
+        <div class="metrics">
+          <div class="metric-item">
+            <span class="metric-label">GSD:</span>
+            <span class="metric-value">1.2 cm</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-label">Sensor:</span>
+            <span class="metric-value">Mavic 3E</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Quick Navigation Section -->
+      <div class="quick-nav">
+        <p class="section-title">Jump to Location</p>
+        <div class="nav-links" id="nav-poi-list">
+          <button class="nav-btn" data-lat="53.03942" data-lng="-6.26583" data-zoom="18">
+            <span class="btn-icon">🏰</span> Glendalough House
+          </button>
+          <button class="nav-btn" data-lat="53.04230" data-lng="-6.26361" data-zoom="19">
+            <span class="btn-icon">🎸</span> Main Stage
+          </button>
+          <button class="nav-btn" data-lat="53.040717" data-lng="-6.261549" data-zoom="18">
+            <span class="btn-icon">🏕️</span> Campsite Area
+          </button>
+          <button class="nav-btn" data-lat="53.03977" data-lng="-6.26337" data-zoom="18">
+            <span class="btn-icon">🏥</span> HQ & Medical
+          </button>
+        </div>
+      </div>
+      
+      <div class="divider"></div>
+
+      <!-- Annotation Control State Display -->
+      <div class="instructions-panel">
+        <p class="section-title">Tools Help</p>
+        <p class="instructions-text">Use the toolbar on the left to draw annotations (zones, paths). Use the ruler in the top-right to measure stages/capacity.</p>
+      </div>
+    </header>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

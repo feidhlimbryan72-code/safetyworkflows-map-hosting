@@ -1,0 +1,491 @@
+/* ==========================================================================
+   Safety Workflows - Web GIS Premium CSS Styling
+   ========================================================================== */
+
+/* Clean typography and box-sizing resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #121212;
+  font-family: 'Outfit', sans-serif;
+  color: #e0e0e0;
+}
+
+/* Map Container - Full screen styling */
+#map {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: #1e1e1e; /* Dark grey to contrast with GeoTIFF irregular edges */
+}
+
+/* Custom Webkit scrollbar for scrollable panels */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(30, 30, 30, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================================================
+   Premium Glassmorphism Header Overlay
+   ========================================================================== */
+.header-overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000; /* Must sit on top of Leaflet layers (z-index: 1) */
+  width: 340px;
+  padding: 24px;
+  border-radius: 16px;
+  background: rgba(22, 22, 22, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.55), 
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.header-overlay:hover {
+  box-shadow: 0 16px 48px 0 rgba(0, 0, 0, 0.65), 
+              0 0 15px rgba(0, 229, 255, 0.1),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Brand styling */
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #00ffd1 0%, #00e5ff 100%);
+  color: #121212;
+  box-shadow: 0 4px 14px rgba(0, 229, 255, 0.3);
+}
+
+.brand-text h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  background: linear-gradient(90deg, #ffffff 0%, #a5f3fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-text .subtitle {
+  margin: 2px 0 0 0;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #94a3b8;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.08) 20%, rgba(255, 255, 255, 0.08) 80%, rgba(255, 255, 255, 0) 100%);
+}
+
+/* Survey Status & Pulse Indicator */
+.survey-status {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #00ffd1;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 0 rgba(0, 255, 209, 0.7);
+  animation: pulse 1.8s infinite;
+}
+
+.status-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #00ffd1;
+  letter-spacing: 0.5px;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.metric-item {
+  display: flex;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.metric-label {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.metric-value {
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+/* Quick Navigation */
+.quick-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.section-title {
+  margin: 0 0 4px 0;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #64748b;
+}
+
+.nav-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-btn:hover {
+  background: rgba(0, 229, 255, 0.1);
+  border-color: rgba(0, 229, 255, 0.3);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.nav-btn:active {
+  transform: translateY(1px);
+}
+
+.btn-icon {
+  font-size: 13px;
+}
+
+/* Instructions Panel */
+.instructions-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.instructions-text {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 255, 209, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(0, 255, 209, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 255, 209, 0);
+  }
+}
+
+/* ==========================================================================
+   Leaflet UI Overrides (Applying dark-mode aesthetics)
+   ========================================================================== */
+
+/* Relocate default control containers (zoom and draw toolbar) next to the glassmorphic header overlay */
+.leaflet-top.leaflet-left {
+  top: 20px !important;
+  left: 380px !important;
+  transition: all 0.3s ease;
+  z-index: 1000 !important;
+}
+
+/* Premium styling for Leaflet control groups (Zoom, Draw, Measure) */
+.leaflet-bar {
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+  border-radius: 8px !important;
+  overflow: visible !important; /* CRITICAL: Prevent clipping of hover tooltips */
+  background: rgba(22, 22, 22, 0.85) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.leaflet-bar li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: transparent !important;
+  transition: background-color 0.2s ease;
+}
+
+.leaflet-bar li:last-child {
+  border-bottom: none !important;
+}
+
+.leaflet-bar li:hover {
+  background-color: rgba(0, 229, 255, 0.15) !important;
+}
+
+.leaflet-bar a {
+  background-color: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #cbd5e1 !important;
+  width: 34px !important;
+  height: 34px !important;
+  line-height: 34px !important;
+  transition: all 0.2s ease;
+  overflow: visible !important; /* CRITICAL: Prevent clipping of hover tooltips */
+}
+
+.leaflet-bar a:hover {
+  background-color: rgba(0, 229, 255, 0.15) !important;
+  color: #00ffd1 !important;
+}
+
+/* Leaflet Draw Custom Styling - Inverting black icons to high-contrast white */
+.leaflet-draw-toolbar {
+  margin-top: 0 !important;
+  border: none !important;
+  overflow: visible !important; /* CRITICAL: Prevent clipping of hover tooltips */
+}
+
+.leaflet-draw-toolbar a {
+  background-color: transparent !important;
+  border: none !important;
+  filter: invert(1) brightness(2) !important; /* Converts black drawing icons to crisp white */
+  width: 34px !important;
+  height: 34px !important;
+  line-height: 34px !important;
+  position: relative;
+  overflow: visible !important; /* CRITICAL: Prevent clipping of hover tooltips */
+}
+
+.leaflet-draw-actions {
+  left: 36px !important;
+  background-color: rgba(22, 22, 22, 0.95) !important;
+  border-radius: 0 8px 8px 0 !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-left: none !important;
+  top: 2px !important;
+}
+
+.leaflet-draw-actions li a {
+  background-color: transparent !important;
+  color: #cbd5e1 !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 500 !important;
+}
+
+.leaflet-draw-actions li a:hover {
+  background-color: rgba(239, 68, 68, 0.2) !important;
+  color: #fca5a5 !important;
+}
+
+/* Custom Styled Hover Tooltips for Controls (Instant, High-Contrast) */
+.leaflet-bar a[data-tooltip],
+.leaflet-draw-toolbar a[data-tooltip] {
+  position: relative;
+}
+
+.leaflet-bar a[data-tooltip]::after,
+.leaflet-draw-toolbar a[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 46px; /* Render tooltip to the right of left-aligned buttons */
+  top: 50%;
+  transform: translateY(-50%) scale(0.9);
+  background: rgba(15, 23, 42, 0.95);
+  color: #00ffd1; /* Neon accent */
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 255, 209, 0.2);
+  z-index: 2000;
+}
+
+.leaflet-bar a[data-tooltip]:hover::after,
+.leaflet-draw-toolbar a[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+/* Position tooltips on the left for right-aligned controls (e.g. Measure tool) */
+.leaflet-right a[data-tooltip]::after {
+  left: auto !important;
+  right: 46px !important; /* Render tooltip to the left of the button */
+}
+
+/* Leaflet Measure Custom Styling to match platform theme */
+.leaflet-control-measure {
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+  border-radius: 8px !important;
+  background-color: rgba(22, 22, 22, 0.85) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: 'Outfit', sans-serif !important;
+  color: #cbd5e1 !important;
+}
+
+.leaflet-control-measure a.js-toggle {
+  background-color: rgba(22, 22, 22, 0.85) !important;
+  border-radius: 8px !important;
+  color: #cbd5e1 !important;
+  width: 32px !important;
+  height: 32px !important;
+  transition: all 0.2s ease;
+  background-size: 16px 16px !important;
+}
+
+.leaflet-control-measure a.js-toggle:hover {
+  background-color: rgba(0, 229, 255, 0.15) !important;
+  color: #00ffd1 !important;
+}
+
+.leaflet-control-measure .tasks {
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.leaflet-control-measure .tasks li a {
+  color: #00ffd1 !important;
+  font-weight: 500;
+}
+
+.leaflet-control-measure .tasks li a:hover {
+  text-decoration: underline;
+}
+
+/* Measure overlay popups styles */
+.leaflet-measure-resultpopup .leaflet-popup-content-wrapper {
+  background-color: rgba(22, 22, 22, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #cbd5e1 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+  border-radius: 8px !important;
+  backdrop-filter: blur(8px);
+}
+
+.leaflet-measure-resultpopup .leaflet-popup-tip {
+  background-color: rgba(22, 22, 22, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.leaflet-measure-resultpopup h3 {
+  font-size: 14px !important;
+  color: #ffffff !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Attribution Styling */
+.leaflet-container .leaflet-control-attribution {
+  background: rgba(18, 18, 18, 0.6) !important;
+  color: #64748b !important;
+  font-size: 10px !important;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-top-left-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: none;
+  border-bottom: none;
+}
+
+.leaflet-container .leaflet-control-attribution a {
+  color: #00e5ff !important;
+  text-decoration: none;
+}
+
+.leaflet-container .leaflet-control-attribution a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .header-overlay {
+    width: calc(100% - 40px);
+    top: 10px;
+    left: 10px;
+  }
+  
+  .leaflet-top.leaflet-left {
+    top: 420px !important; /* Push further down on smaller screens */
+    left: 10px !important;
+  }
+}

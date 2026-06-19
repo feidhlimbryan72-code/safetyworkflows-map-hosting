@@ -1,0 +1,18 @@
+services:
+  - type: static
+    name: safetyworkflows-map-hosting
+    buildCommand: npm run build
+    publishPath: dist
+    headers:
+      - path: /*
+        name: Access-Control-Allow-Origin
+        value: "*"
+      - path: /*
+        name: X-Frame-Options
+        value: "SAMEORIGIN"
+      - path: /*
+        name: X-Content-Type-Options
+        value: "nosniff"
+      - path: /*
+        name: Content-Security-Policy
+        value: "upgrade-insecure-requests"
