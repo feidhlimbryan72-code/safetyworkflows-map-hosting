@@ -1,8 +1,9 @@
 services:
-  - type: static
+  - type: web
     name: safetyworkflows-map-hosting
+    runtime: static
     buildCommand: npm run build
-    publishPath: dist
+    staticPublishPath: dist
     headers:
       - path: /*
         name: Access-Control-Allow-Origin
@@ -16,3 +17,4 @@ services:
       - path: /*
         name: Content-Security-Policy
         value: "upgrade-insecure-requests"
+
